@@ -1,7 +1,5 @@
 #include "GuiBase.h"
 
-#include <iostream>
-
 GuiBase::GuiBase() {
     guiManager = 0;
 }

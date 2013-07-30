@@ -1,7 +1,5 @@
 #include "Button.h"
 
-#include <iostream>
-
 Button::Button() {
     Button(-1, 0, 0, 100, 50, "Button");
 }
@@ -26,12 +24,7 @@ void Button::setGuiManager(GuiManager* guiManager) {
 
 // returns true if clicked
 bool Button::onEvent(sf::Event event) {
-
-    std::cout << "Button::onEvent\n";
-
     if (event.type == sf::Event::MouseMoved) {
-
-        std::cout << "- MouseMoved event\n";
 
         if (event.mouseMove.x > xPos
                 && event.mouseMove.x < xPos + width
@@ -44,12 +37,8 @@ bool Button::onEvent(sf::Event event) {
     if (hovering
             && event.type == sf::Event::MouseButtonPressed
             && event.mouseButton.button == sf::Mouse::Left
-       ) {
-
-        std::cout << "- MouseButtonPressed event\n";
-
+       )
         return true;
-    }
 
     return false;
 }

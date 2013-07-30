@@ -2,8 +2,6 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <iostream>
-
 int main() {
     sf::RenderWindow window(sf::VideoMode(800, 450), "Gui");
 
@@ -22,7 +20,6 @@ int main() {
                     || event.type == sf::Event::MouseButtonReleased
                     || event.type == sf::Event::MouseMoved
                ) {
-                std::cout << "main(): Event\n";
                 guiManager.onEvent(event);
             }
         }
