@@ -5,11 +5,16 @@ Collection of classes to easily create game and application menus.
 
 Uses polymorphism to make it possible to use a separate class per screen.
 
-Coming features:
+Features
+--------
+- gui screens
+- buttons
 
-- labels
-- checkboxes
+To do
+-----
 - text fields
+- checkboxes
+- faders
 
 Uses the [SFML library](http://sfml-dev.org).
 
