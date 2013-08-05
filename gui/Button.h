@@ -11,18 +11,16 @@ class Button {
         Button(Game *newGame, int newID, std::string newTitle, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight);
         ~Button();
 
-        bool onEvent(sf::Event &event);
+        bool onEvent(sf::Event &event); // returns true if clicked
         void onDraw(sf::RenderTarget &target) const;
 
         int getID() const;
 
-    protected:
+    private:
         int id, xPos, yPos;
         unsigned int width, height;
         sf::Text title;
         bool hovering;
-
-        Button();
 };
 
 #endif // BUTTON_H
