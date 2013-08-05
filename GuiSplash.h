@@ -1,6 +1,7 @@
 #ifndef GUISPLASH_H
 #define GUISPLASH_H
 
+#include <GuiNewGame.h>
 #include <gui/GuiBase.h>
 #include <gui/Button.h>
 

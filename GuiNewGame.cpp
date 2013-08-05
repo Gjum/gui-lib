@@ -1,21 +1,23 @@
-#include "GuiSplash.h"
+#include "GuiNewGame.h"
 
-GuiSplash::GuiSplash(Game *newGame) {
+GuiNewGame::GuiNewGame(Game *newGame) {
     game = newGame;
 
     title.setString("Game menu");
     title.setColor(sf::Color(255, 255, 255));
 
-    buttons.insert(buttons.end(), new Button(newGame, 0, "New game", 60, 60, 200, 30));
-    buttons.insert(buttons.end(), new Button(newGame, 1, "Exit", 60, 100, 200, 30));
+    playerName = new TextField(newGame, 60, 60, 200, 30);
+    buttons.insert(buttons.end(), new Button(newGame, 0, "Start game", 60, 100, 200, 30));
+    buttons.insert(buttons.end(), new Button(newGame, 1, "Cancel", 60, 140, 200, 30));
 }
-GuiSplash::~GuiSplash() {
+GuiNewGame::~GuiNewGame() {
     for (auto button : buttons) {
         delete button;
     }
+    delete playerName;
 }
 
-void GuiSplash::onEvent(sf::Event &event) {
+void GuiNewGame::onEvent(sf::Event &event) {
     int buttonID = -1;
 
     for (auto button : buttons) {
@@ -24,18 +26,20 @@ void GuiSplash::onEvent(sf::Event &event) {
             break;
         }
     }
+    playerName->onEvent(event);
+
     if (buttonID == 0) {
-        game->changeGui(new GuiNewGame(game));
+        // TODO add functionality
     }
     else if (buttonID == 1) {
-        game->exit();
+        game->changeGui(new GuiSplash(game));
     }
     else {
         // no button pressed
     }
 }
 
-void GuiSplash::onDraw(sf::RenderTarget &target) {
+void GuiNewGame::onDraw(sf::RenderTarget &target) {
     sf::RectangleShape background(sf::Vector2f(target.getSize().x, target.getSize().y));
     background.setFillColor(sf::Color(0, 0, 0));
     target.draw(background);
@@ -43,6 +47,8 @@ void GuiSplash::onDraw(sf::RenderTarget &target) {
     for (auto button : buttons) {
         button->onDraw(target);
     }
+
+    playerName->onDraw(target);
 
     target.draw(title);
 }

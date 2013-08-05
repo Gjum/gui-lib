@@ -9,14 +9,14 @@ Features
 --------
 - gui screens
 - buttons
-
-Features before 1.0
--------------------
 - text fields
+
+Features before 1.0.0
+---------------------
 - checkboxes
 - faders
 
-Uses the [SFML library](http://sfml-dev.org).
+Uses the [SFML 2.0 library](http://sfml-dev.org).
 
 To render fonts, make sure to place a font file named `font.ttf` in the executing directory.
 
