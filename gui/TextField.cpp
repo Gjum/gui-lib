@@ -30,8 +30,12 @@ void TextField::onEvent(sf::Event &event) {
         else active = false;
     }
     else if (active && event.type == sf::Event::TextEntered) {
-        // TODO
-        std::string newText = title.getString() + static_cast<char>(event.text.unicode);
+        std::string newText = title.getString();
+        if (event.text.unicode == 8) {
+            newText = newText.substr(0, newText.size()-1);
+        }
+        else newText += static_cast<char>(event.text.unicode);
+
         title.setString(newText);
     }
 }
