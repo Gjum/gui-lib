@@ -11,7 +11,7 @@ class GuiBase {
         virtual ~GuiBase();
 
         virtual void onEvent(sf::Event &event) = 0;
-        virtual void onDraw(sf::RenderWindow &window) = 0;
+        virtual void onDraw(sf::RenderTarget &target) = 0;
 
     protected:
         Game *game;

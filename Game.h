@@ -7,17 +7,20 @@
 
 class Game {
     public:
-        Game();
+        Game(sf::RenderWindow *window);
         ~Game();
 
         void onEvent(sf::Event &event);
-        void onDraw(sf::RenderWindow &window);
+        void onDraw();
         void changeGui(GuiBase *newGui);
         sf::Font &getFont();
+
+        void exit();
 
     private:
         GuiBase *activeGui, *prevGui;
         sf::Font font;
+        sf::RenderWindow *window;
 };
 
 #endif // GAME_H

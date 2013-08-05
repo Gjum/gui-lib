@@ -3,15 +3,15 @@ gui-lib
 
 Collection of classes to easily create game and application menus.
 
-Uses polymorphism to make it possible to use a separate class per screen.
+Uses polymorphism to make it possible to use a separate class for each screen.
 
 Features
 --------
 - gui screens
-
-To do
------
 - buttons
+
+Features before 1.0
+-------------------
 - text fields
 - checkboxes
 - faders

@@ -2,6 +2,7 @@
 #define GUISPLASH_H
 
 #include <gui/GuiBase.h>
+#include <gui/Button.h>
 
 class GuiSplash: public GuiBase {
     public:
@@ -9,9 +10,11 @@ class GuiSplash: public GuiBase {
         ~GuiSplash();
 
         void onEvent(sf::Event &event);
-        void onDraw(sf::RenderWindow &window);
+        void onDraw(sf::RenderTarget &target);
 
     private:
+        std::vector<Button *> buttons;
+        sf::Text title;
 };
 
 #endif // GUISPLASH_H

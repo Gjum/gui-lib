@@ -6,7 +6,7 @@
 int main(int argc, char *argv[]) {
     sf::RenderWindow window(sf::VideoMode(800, 450), "New SFML Project");
 
-    Game game;
+    Game game(&window);
 
     game.changeGui(new GuiSplash(&game));
 
@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
 
         window.clear();
 
-        game.onDraw(window);
+        game.onDraw();
 
         window.display();
     }

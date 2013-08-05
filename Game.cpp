@@ -1,6 +1,7 @@
 #include "Game.h"
 
-Game::Game() {
+Game::Game(sf::RenderWindow *newWindow) {
+    window = newWindow;
     font.loadFromFile("font.ttf");
     prevGui = 0;
     activeGui = 0;
@@ -14,8 +15,8 @@ void Game::onEvent(sf::Event &event) {
     if (activeGui != 0) activeGui->onEvent(event);
 }
 
-void Game::onDraw(sf::RenderWindow &window) {
-    if (activeGui != 0) activeGui->onDraw(window);
+void Game::onDraw() {
+    if (activeGui != 0) activeGui->onDraw(*window);
 }
 
 void Game::changeGui(GuiBase *newGui) {
@@ -26,4 +27,8 @@ void Game::changeGui(GuiBase *newGui) {
 
 sf::Font &Game::getFont() {
     return font;
+}
+
+void Game::exit() {
+    window->close();
 }
