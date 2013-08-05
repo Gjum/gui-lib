@@ -14,8 +14,9 @@ class GuiSplash: public GuiBase {
         void onDraw(sf::RenderTarget &target);
 
     private:
-        std::vector<Button *> buttons;
         sf::Text title;
+        Button *newGameButton,
+            *exitButton;
 };
 
 #endif // GUISPLASH_H

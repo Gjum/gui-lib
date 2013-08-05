@@ -6,28 +6,19 @@ GuiSplash::GuiSplash(Game *newGame) {
     title.setString("Game menu");
     title.setColor(sf::Color(255, 255, 255));
 
-    buttons.insert(buttons.end(), new Button(newGame, 0, "New game", 60, 60, 200, 30));
-    buttons.insert(buttons.end(), new Button(newGame, 1, "Exit", 60, 100, 200, 30));
+    newGameButton = new Button(newGame, "New game", 60, 60, 200, 30);
+    exitButton = new Button(newGame, "Exit", 60, 100, 200, 30);
 }
 GuiSplash::~GuiSplash() {
-    for (auto button : buttons) {
-        delete button;
-    }
+    delete newGameButton;
+    delete exitButton;
 }
 
 void GuiSplash::onEvent(sf::Event &event) {
-    int buttonID = -1;
-
-    for (auto button : buttons) {
-        if (button->onEvent(event)) {
-            buttonID = button->getID();
-            break;
-        }
-    }
-    if (buttonID == 0) {
+    if (newGameButton->onEvent(event)) {
         game->changeGui(new GuiNewGame(game));
     }
-    else if (buttonID == 1) {
+    else if (exitButton->onEvent(event)) {
         game->exit();
     }
     else {
@@ -40,9 +31,8 @@ void GuiSplash::onDraw(sf::RenderTarget &target) {
     background.setFillColor(sf::Color(0, 0, 0));
     target.draw(background);
 
-    for (auto button : buttons) {
-        button->onDraw(target);
-    }
+    newGameButton->onDraw(target);
+    exitButton->onDraw(target);
 
     target.draw(title);
 }

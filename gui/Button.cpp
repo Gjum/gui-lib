@@ -1,10 +1,9 @@
 #include "Button.h"
 
-Button::Button(Game *newGame, int newID, std::string newTitle, int newXPos, int newYPos) {
-    Button(newGame, newID, newTitle, newXPos, newYPos, 200, 30);
+Button::Button(Game *newGame, std::string newTitle, int newXPos, int newYPos) {
+    Button(newGame, newTitle, newXPos, newYPos, 200, 30);
 }
-Button::Button(Game *newGame, int newID, std::string newTitle, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight) {
-    id = newID;
+Button::Button(Game *newGame, std::string newTitle, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight) {
     xPos = newXPos;
     yPos = newYPos;
     width = newWidth;
@@ -50,8 +49,4 @@ void Button::onDraw(sf::RenderTarget &target) const {
     target.draw(background);
 
     target.draw(title);
-}
-
-int Button::getID() const {
-    return id;
 }

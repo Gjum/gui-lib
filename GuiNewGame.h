@@ -16,9 +16,10 @@ class GuiNewGame: public GuiBase {
         void onDraw(sf::RenderTarget &target);
 
     private:
-        std::vector<Button *> buttons;
         sf::Text title;
         TextField *playerName;
+        Button *startGameButton,
+            *cancelButton;
 };
 
 #endif // GUINEWGAME_H
