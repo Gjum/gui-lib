@@ -10,8 +10,7 @@ TextField::TextField(Game *newGame, int newXPos, int newYPos, unsigned int newWi
 
     title.setFont(newGame->getFont());
     title.setCharacterSize(15);
-    title.setOrigin(sf::Vector2f(0, title.getCharacterSize() / 2.0));
-    title.move(sf::Vector2f(xPos + 10, yPos + height / 2.0));
+    title.move(sf::Vector2f(xPos + title.getCharacterSize() / 2.0, yPos + height / 2.0 - title.getCharacterSize() / 2.0));
 
     active = false;
 }
@@ -34,7 +33,9 @@ void TextField::onEvent(sf::Event &event) {
         if (event.text.unicode == 8) {
             newText = newText.substr(0, newText.size()-1);
         }
-        else newText += static_cast<char>(event.text.unicode);
+        else if (event.text.unicode <= 126 && event.text.unicode >= 32) {
+            newText += static_cast<char>(event.text.unicode);
+        }
 
         title.setString(newText);
     }
