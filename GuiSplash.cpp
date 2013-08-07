@@ -3,11 +3,12 @@
 GuiSplash::GuiSplash(Game *newGame) {
     game = newGame;
 
-    title.setString("Game menu");
+    title.setString("gui-lib demo");
     title.setColor(sf::Color(255, 255, 255));
+    title.move(sf::Vector2f(20, 20));
 
-    newGameButton = new Button(newGame, "New game", 60, 60, 200, 30);
-    exitButton = new Button(newGame, "Exit", 60, 100, 200, 30);
+    newGameButton = new Button(newGame, "New game", 60, 60);
+    exitButton = new Button(newGame, "Exit", 60, 100);
 }
 GuiSplash::~GuiSplash() {
     delete newGameButton;

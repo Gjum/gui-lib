@@ -6,23 +6,22 @@
 int main(int argc, char *argv[]) {
     sf::RenderWindow window(sf::VideoMode(800, 450), "New SFML Project");
 
-    Game game(&window);
+    Game *game = new Game(&window);
 
-    game.changeGui(new GuiSplash(&game));
+    game->changeGui(new GuiSplash(game));
 
     while (window.isOpen()) {
 
         sf::Event event;
         while (window.pollEvent(event)) {
+            game->onEvent(event);
             if (event.type == sf::Event::Closed)
                 window.close();
-
-            game.onEvent(event);
         }
 
         window.clear();
 
-        game.onDraw();
+        game->onDraw();
 
         window.display();
     }
