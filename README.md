@@ -10,13 +10,14 @@ Features
 - gui screens
 - buttons
 - text fields
-
-Features before 1.0.0
----------------------
 - checkboxes
-- faders
+
+Coming features
+---------------
+- to be done before 1.0.0:
+    - faders
+- keyboard listeners (e.g. ESC or ENTER)
 
 Uses the [SFML 2.0 library](http://sfml-dev.org).
 
 To render fonts, make sure to place a font file named `font.ttf` in the executing directory.
-

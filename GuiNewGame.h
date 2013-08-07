@@ -2,10 +2,10 @@
 #define GUINEWGAME_H
 
 #include <GuiSplash.h>
-
 #include <gui/GuiBase.h>
-#include <gui/Button.h>
 #include <gui/TextField.h>
+#include <gui/Checkbox.h>
+#include <gui/Button.h>
 
 class GuiNewGame: public GuiBase {
     public:
@@ -18,6 +18,7 @@ class GuiNewGame: public GuiBase {
     private:
         sf::Text title;
         TextField *playerName;
+        Checkbox *checkbox;
         Button *startGameButton,
             *cancelButton;
 };
