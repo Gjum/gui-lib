@@ -12,6 +12,14 @@ Fader::Fader(MainClass *newMainClass,
     range = rangeEnd - rangeStart;
     value = rangeStart;
     dragging = false;
+
+    line.setSize(sf::Vector2f(width, 5));
+    line.setPosition(xPos, yPos + height / 3);
+    line.setFillColor(sf::Color(0, 0, 255, 128));
+
+    marker.setSize(sf::Vector2f(1, height / 2));
+    marker.setPosition(xPos + value * width / range, yPos);
+    marker.setFillColor(sf::Color(0, 0, 255, 255));
 }
 Fader::~Fader() {
 }
@@ -33,14 +41,7 @@ void Fader::onEvent(sf::Event &event) {
     }
 }
 void Fader::onDraw(sf::RenderTarget &target) const {
-    sf::RectangleShape line(sf::Vector2f(width, 5));
-    line.move(xPos, yPos + height / 3);
-    line.setFillColor(sf::Color(0, 0, 255, 128));
     target.draw(line);
-
-    sf::RectangleShape marker(sf::Vector2f(1, height / 2));
-    marker.move(xPos + value * width / range, yPos);
-    marker.setFillColor(sf::Color(0, 0, 255, 255));
     target.draw(marker);
 }
 

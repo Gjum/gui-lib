@@ -5,7 +5,7 @@ Label::Label(MainClass *newMainClass, std::string newTitle,
     title.setString(newTitle);
     title.setFont(newMainClass->getFont());
     title.setCharacterSize(newSize);
-    title.move(sf::Vector2f(newXPos, newYPos));
+    title.setPosition(sf::Vector2f(newXPos, newYPos));
 }
 Label::~Label() {
 }

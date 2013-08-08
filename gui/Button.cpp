@@ -9,8 +9,8 @@ Button::Button(MainClass *newMainClass, std::string newTitle, int newXPos, int n
 
     title.setFont(newMainClass->getFont());
     title.setCharacterSize(15);
-    title.setOrigin(sf::Vector2f(title.findCharacterPos(title.getString().getSize()).x / 2.0, title.getCharacterSize() / 2.0));
-    title.move(sf::Vector2f(xPos + width / 2.0, yPos + height / 2.0));
+    title.setOrigin(title.findCharacterPos(title.getString().getSize()).x / 2.0, title.getCharacterSize() / 2.0);
+    title.setPosition(xPos + width / 2.0, yPos + height / 2.0);
 
     hovering = false;
 }
@@ -19,12 +19,12 @@ Button::Button(MainClass *newMainClass, std::string newTitle, int newXPos, int n
     yPos = newYPos;
     width = newWidth;
     height = newHeight;
-    title.setString(newTitle);
 
+    title.setString(newTitle);
     title.setFont(newMainClass->getFont());
     title.setCharacterSize(15);
-    title.setOrigin(sf::Vector2f(title.findCharacterPos(title.getString().getSize()).x / 2.0, title.getCharacterSize() / 2.0));
-    title.move(sf::Vector2f(xPos + width / 2.0, yPos + height / 2.0));
+    title.setOrigin(title.findCharacterPos(title.getString().getSize()).x / 2.0, title.getCharacterSize() / 2.0);
+    title.setPosition(xPos + width / 2.0, yPos + height / 2.0);
 
     hovering = false;
 }

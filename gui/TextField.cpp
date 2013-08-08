@@ -8,7 +8,7 @@ TextField::TextField(MainClass *newMainClass, int newXPos, int newYPos) {
 
     title.setFont(newMainClass->getFont());
     title.setCharacterSize(15);
-    title.move(sf::Vector2f(xPos + title.getCharacterSize() / 2.0, yPos + height / 2.0 - title.getCharacterSize() / 2.0));
+    title.setPosition(xPos + title.getCharacterSize() / 2.0, yPos + height / 2.0 - title.getCharacterSize() / 2.0);
 
     active = false;
 }
@@ -20,7 +20,7 @@ TextField::TextField(MainClass *newMainClass, int newXPos, int newYPos, unsigned
 
     title.setFont(newMainClass->getFont());
     title.setCharacterSize(15);
-    title.move(sf::Vector2f(xPos + title.getCharacterSize() / 2.0, yPos + height / 2.0 - title.getCharacterSize() / 2.0));
+    title.setPosition(xPos + title.getCharacterSize() / 2.0, yPos + height / 2.0 - title.getCharacterSize() / 2.0);
 
     active = false;
 }
@@ -52,8 +52,8 @@ void TextField::onEvent(sf::Event &event) {
 }
 void TextField::onDraw(sf::RenderTarget &target) const {
     sf::RectangleShape background(sf::Vector2f(width, height));
-    background.setOrigin(-xPos, -yPos);
-    background.setFillColor(sf::Color(0, 0, 0, 0));
+    background.setPosition(xPos, yPos);
+    background.setFillColor(sf::Color(0, 0, 0, 128));
     background.setOutlineThickness(2);
     if (active) background.setOutlineColor(sf::Color(0, 0, 255, 255));
     else background.setOutlineColor(sf::Color(0, 0, 255, 128));

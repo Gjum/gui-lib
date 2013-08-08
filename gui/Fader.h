@@ -23,6 +23,8 @@ class Fader {
         unsigned int width, height;
         int range, rangeStart, rangeEnd, value;
         bool dragging;
+
+        sf::RectangleShape line, marker;
 };
 
 #endif // FADER_H

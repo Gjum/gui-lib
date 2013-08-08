@@ -46,7 +46,7 @@ void Checkbox::onEvent(sf::Event &event) {
 }
 void Checkbox::onDraw(sf::RenderTarget &target) const {
     sf::RectangleShape background(sf::Vector2f(width, height));
-    background.setOrigin(-xPos, -yPos);
+    background.setPosition(xPos, yPos);
     background.setOutlineThickness(2);
     background.setOutlineColor(sf::Color(0, 0, 255, 128));
     if (hovering) {
