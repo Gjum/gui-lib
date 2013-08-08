@@ -11,11 +11,10 @@ Features
 - buttons
 - text fields
 - checkboxes
+- faders
 
 Coming features
 ---------------
-- to be done before 1.0.0:
-    - faders
 - keyboard listeners (e.g. ESC or ENTER)
 
 Uses the [SFML 2.0 library](http://sfml-dev.org).

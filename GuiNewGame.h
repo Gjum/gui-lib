@@ -5,6 +5,7 @@
 #include <gui/GuiBase.h>
 #include <gui/TextField.h>
 #include <gui/Checkbox.h>
+#include <gui/Fader.h>
 #include <gui/Button.h>
 
 class GuiNewGame: public GuiBase {
@@ -19,6 +20,7 @@ class GuiNewGame: public GuiBase {
         sf::Text title;
         TextField *playerName;
         Checkbox *checkbox;
+        Fader *fader;
         Button *startGameButton,
             *cancelButton;
 };
