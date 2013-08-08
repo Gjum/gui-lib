@@ -2,6 +2,7 @@
 #define FADER_H
 
 #include <MainClass.h>
+#include <gui/Label.h>
 
 #include <SFML/Window.hpp>
 
@@ -13,7 +14,7 @@ class Fader {
         ~Fader();
 
         void onEvent(sf::Event &event);
-        void onDraw(sf::RenderTarget &target) const;
+        void onDraw(sf::RenderTarget &target);
 
         int getValue() const;
         void setValue(int newValue);
@@ -25,6 +26,7 @@ class Fader {
         bool dragging;
 
         sf::RectangleShape line, marker;
+        Label *startText, *endText, *markerText;
 };
 
 #endif // FADER_H

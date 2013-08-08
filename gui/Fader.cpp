@@ -20,8 +20,15 @@ Fader::Fader(MainClass *newMainClass,
     marker.setSize(sf::Vector2f(1, height / 2));
     marker.setPosition(xPos + value * width / range, yPos);
     marker.setFillColor(sf::Color(0, 0, 255, 255));
+
+    startText = new Label(newMainClass, std::to_string(rangeStart), xPos, yPos + height / 2, 15);
+    markerText = new Label(newMainClass, std::to_string(value), xPos + value * width / range, yPos + height / 2, 15);
+    endText = new Label(newMainClass, std::to_string(rangeEnd), xPos + width, yPos + height / 2, 15);
 }
 Fader::~Fader() {
+    delete startText;
+    delete endText;
+    delete markerText;
 }
 
 void Fader::onEvent(sf::Event &event) {
@@ -40,9 +47,17 @@ void Fader::onEvent(sf::Event &event) {
         else dragging = false;
     }
 }
-void Fader::onDraw(sf::RenderTarget &target) const {
+void Fader::onDraw(sf::RenderTarget &target) {
     target.draw(line);
+    marker.setPosition(xPos + value * width / range, yPos);
     target.draw(marker);
+
+    markerText->setPosition(xPos + value * width / range, yPos + height / 2);
+    markerText->setText(std::to_string(value));
+
+    startText->onDraw(target);
+    endText->onDraw(target);
+    markerText->onDraw(target);
 }
 
 int Fader::getValue() const {

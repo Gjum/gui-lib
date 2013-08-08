@@ -13,3 +13,10 @@ Label::~Label() {
 void Label::onDraw(sf::RenderTarget &target) const {
     target.draw(title);
 }
+
+void Label::setPosition(unsigned int x, unsigned int y) {
+    title.setPosition(x, y);
+}
+void Label::setText(std::string text) {
+    title.setString(text);
+}
