@@ -9,7 +9,7 @@
 
 class GuiNewGame: public GuiBase {
     public:
-        GuiNewGame(Game *newGame);
+        GuiNewGame(MainClass *newMainClass);
         ~GuiNewGame();
 
         void onEvent(sf::Event &event);

@@ -1,14 +1,14 @@
 #include "GuiSplash.h"
 
-GuiSplash::GuiSplash(Game *newGame) {
-    game = newGame;
+GuiSplash::GuiSplash(MainClass *newMainClass) {
+    mainClass = newMainClass;
 
     title.setString("gui-lib demo");
     title.setColor(sf::Color(255, 255, 255));
     title.move(sf::Vector2f(20, 20));
 
-    newGameButton = new Button(newGame, "New game", 60, 60);
-    exitButton = new Button(newGame, "Exit", 60, 100);
+    newGameButton = new Button(newMainClass, "New game", 60, 60);
+    exitButton = new Button(newMainClass, "Exit", 60, 100);
 }
 GuiSplash::~GuiSplash() {
     delete newGameButton;
@@ -17,10 +17,10 @@ GuiSplash::~GuiSplash() {
 
 void GuiSplash::onEvent(sf::Event &event) {
     if (newGameButton->onEvent(event)) {
-        game->changeGui(new GuiNewGame(game));
+        mainClass->changeGui(new GuiNewGame(mainClass));
     }
     else if (exitButton->onEvent(event)) {
-        game->exit();
+        mainClass->exit();
     }
     else {
         // no button pressed

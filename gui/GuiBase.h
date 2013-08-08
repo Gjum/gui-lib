@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 
-class Game;
+class MainClass;
 
 class GuiBase {
     public:
@@ -14,10 +14,10 @@ class GuiBase {
         virtual void onDraw(sf::RenderTarget &target) = 0;
 
     protected:
-        Game *game;
+        MainClass *mainClass;
 };
 
 // forward declared
-#include <Game.h>
+#include <MainClass.h>
 
 #endif // GUIBASE_H

@@ -1,4 +1,4 @@
-#include <Game.h>
+#include <MainClass.h>
 #include <GuiSplash.h>
 
 #include <SFML/Graphics.hpp>
@@ -6,22 +6,22 @@
 int main(int argc, char *argv[]) {
     sf::RenderWindow window(sf::VideoMode(800, 450), "New SFML Project");
 
-    Game *game = new Game(&window);
+    MainClass *mainClass = new MainClass(&window);
 
-    game->changeGui(new GuiSplash(game));
+    mainClass->changeGui(new GuiSplash(mainClass));
 
     while (window.isOpen()) {
 
         sf::Event event;
         while (window.pollEvent(event)) {
-            game->onEvent(event);
+            mainClass->onEvent(event);
             if (event.type == sf::Event::Closed)
                 window.close();
         }
 
         window.clear();
 
-        game->onDraw();
+        mainClass->onDraw();
 
         window.display();
     }

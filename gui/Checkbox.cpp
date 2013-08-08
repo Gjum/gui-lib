@@ -1,6 +1,6 @@
 #include "Checkbox.h"
 
-Checkbox::Checkbox(Game *newGame, int newXPos, int newYPos) {
+Checkbox::Checkbox(MainClass *newMainClass, int newXPos, int newYPos) {
     xPos = newXPos;
     yPos = newYPos;
     width = 30;
@@ -9,7 +9,7 @@ Checkbox::Checkbox(Game *newGame, int newXPos, int newYPos) {
     enabled = false;
     hovering = false;
 }
-Checkbox::Checkbox(Game *newGame, int newXPos, int newYPos, bool newEnabled) {
+Checkbox::Checkbox(MainClass *newMainClass, int newXPos, int newYPos, bool newEnabled) {
     xPos = newXPos;
     yPos = newYPos;
     width = 30;
@@ -18,7 +18,7 @@ Checkbox::Checkbox(Game *newGame, int newXPos, int newYPos, bool newEnabled) {
     enabled = newEnabled;
     hovering = false;
 }
-Checkbox::Checkbox(Game *newGame, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight) {
+Checkbox::Checkbox(MainClass *newMainClass, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight) {
     xPos = newXPos;
     yPos = newYPos;
     width = newWidth;

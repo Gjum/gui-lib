@@ -1,24 +1,24 @@
 #include "TextField.h"
 
-TextField::TextField(Game *newGame, int newXPos, int newYPos) {
+TextField::TextField(MainClass *newMainClass, int newXPos, int newYPos) {
     xPos = newXPos;
     yPos = newYPos;
     width = 200;
     height = 30;
 
-    title.setFont(newGame->getFont());
+    title.setFont(newMainClass->getFont());
     title.setCharacterSize(15);
     title.move(sf::Vector2f(xPos + title.getCharacterSize() / 2.0, yPos + height / 2.0 - title.getCharacterSize() / 2.0));
 
     active = false;
 }
-TextField::TextField(Game *newGame, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight) {
+TextField::TextField(MainClass *newMainClass, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight) {
     xPos = newXPos;
     yPos = newYPos;
     width = newWidth;
     height = newHeight;
 
-    title.setFont(newGame->getFont());
+    title.setFont(newMainClass->getFont());
     title.setCharacterSize(15);
     title.move(sf::Vector2f(xPos + title.getCharacterSize() / 2.0, yPos + height / 2.0 - title.getCharacterSize() / 2.0));
 

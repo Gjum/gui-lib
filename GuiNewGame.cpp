@@ -1,16 +1,16 @@
 #include "GuiNewGame.h"
 
-GuiNewGame::GuiNewGame(Game *newGame) {
-    game = newGame;
+GuiNewGame::GuiNewGame(MainClass *newMainClass) {
+    mainClass = newMainClass;
 
     title.setString("New game");
     title.setColor(sf::Color(255, 255, 255));
     title.move(sf::Vector2f(20, 20));
 
-    playerName = new TextField(newGame, 60, 60);
-    checkbox = new Checkbox(newGame, 60, 100);
-    startGameButton = new Button(newGame, "Start game", 60, 140);
-    cancelButton = new Button(newGame, "Cancel", 60, 180);
+    playerName = new TextField(newMainClass, 60, 60);
+    checkbox = new Checkbox(newMainClass, 60, 100);
+    startGameButton = new Button(newMainClass, "Start game", 60, 140);
+    cancelButton = new Button(newMainClass, "Cancel", 60, 180);
 }
 GuiNewGame::~GuiNewGame() {
     delete playerName;
@@ -27,7 +27,7 @@ void GuiNewGame::onEvent(sf::Event &event) {
         // TODO add functionality
     }
     else if (cancelButton->onEvent(event)) {
-        game->changeGui(new GuiSplash(game));
+        mainClass->changeGui(new GuiSplash(mainClass));
     }
     else {
         // no button pressed

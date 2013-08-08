@@ -1,14 +1,14 @@
-#ifndef GAME_H
-#define GAME_H
+#ifndef MAINCLASS_H
+#define MAINCLASS_H
 
 #include <gui/GuiBase.h>
 
 #include <SFML/Window.hpp>
 
-class Game {
+class MainClass {
     public:
-        Game(sf::RenderWindow *window);
-        ~Game();
+        MainClass(sf::RenderWindow *window);
+        ~MainClass();
 
         void onEvent(sf::Event &event);
         void onDraw();
@@ -23,4 +23,4 @@ class Game {
         sf::RenderWindow *window;
 };
 
-#endif // GAME_H
+#endif // MAINCLASS_H

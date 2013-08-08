@@ -1,34 +1,34 @@
-#include "Game.h"
+#include "MainClass.h"
 
-Game::Game(sf::RenderWindow *newWindow) {
+MainClass::MainClass(sf::RenderWindow *newWindow) {
     window = newWindow;
     font.loadFromFile("font.ttf");
     prevGui = 0;
     activeGui = 0;
 }
-Game::~Game() {
+MainClass::~MainClass() {
     if (prevGui != 0) delete prevGui;
     if (activeGui != 0) delete activeGui;
 }
 
-void Game::onEvent(sf::Event &event) {
+void MainClass::onEvent(sf::Event &event) {
     if (activeGui != 0) activeGui->onEvent(event);
 }
 
-void Game::onDraw() {
+void MainClass::onDraw() {
     if (activeGui != 0) activeGui->onDraw(*window);
 }
 
-void Game::changeGui(GuiBase *newGui) {
+void MainClass::changeGui(GuiBase *newGui) {
     if (prevGui != 0) delete prevGui;
     prevGui = activeGui;
     activeGui = newGui;
 }
 
-sf::Font &Game::getFont() {
+sf::Font &MainClass::getFont() {
     return font;
 }
 
-void Game::exit() {
+void MainClass::exit() {
     window->close();
 }

@@ -7,7 +7,7 @@
 
 class GuiSplash: public GuiBase {
     public:
-        GuiSplash(Game *newGame);
+        GuiSplash(MainClass *newMainClass);
         ~GuiSplash();
 
         void onEvent(sf::Event &event);

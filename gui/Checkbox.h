@@ -1,15 +1,15 @@
 #ifndef CHECKBOX_H
 #define CHECKBOX_H
 
-#include <Game.h>
+#include <MainClass.h>
 
 #include <SFML/Window.hpp>
 
 class Checkbox {
     public:
-        Checkbox(Game *newGame, int newXPos, int newYPos);
-        Checkbox(Game *newGame, int newXPos, int newYPos, bool newEnabled);
-        Checkbox(Game *newGame, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight);
+        Checkbox(MainClass *newMainClass, int newXPos, int newYPos);
+        Checkbox(MainClass *newMainClass, int newXPos, int newYPos, bool newEnabled);
+        Checkbox(MainClass *newMainClass, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight);
         ~Checkbox();
 
         void onEvent(sf::Event &event);

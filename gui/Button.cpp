@@ -1,27 +1,27 @@
 #include "Button.h"
 
-Button::Button(Game *newGame, std::string newTitle, int newXPos, int newYPos) {
+Button::Button(MainClass *newMainClass, std::string newTitle, int newXPos, int newYPos) {
     xPos = newXPos;
     yPos = newYPos;
     width = 200;
     height = 30;
     title.setString(newTitle);
 
-    title.setFont(newGame->getFont());
+    title.setFont(newMainClass->getFont());
     title.setCharacterSize(15);
     title.setOrigin(sf::Vector2f(title.findCharacterPos(title.getString().getSize()).x / 2.0, title.getCharacterSize() / 2.0));
     title.move(sf::Vector2f(xPos + width / 2.0, yPos + height / 2.0));
 
     hovering = false;
 }
-Button::Button(Game *newGame, std::string newTitle, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight) {
+Button::Button(MainClass *newMainClass, std::string newTitle, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight) {
     xPos = newXPos;
     yPos = newYPos;
     width = newWidth;
     height = newHeight;
     title.setString(newTitle);
 
-    title.setFont(newGame->getFont());
+    title.setFont(newMainClass->getFont());
     title.setCharacterSize(15);
     title.setOrigin(sf::Vector2f(title.findCharacterPos(title.getString().getSize()).x / 2.0, title.getCharacterSize() / 2.0));
     title.move(sf::Vector2f(xPos + width / 2.0, yPos + height / 2.0));
