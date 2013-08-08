@@ -23,12 +23,10 @@ void GuiSplash::onEvent(sf::Event &event) {
 }
 
 void GuiSplash::onDraw(sf::RenderTarget &target) {
-    sf::RectangleShape background(sf::Vector2f(target.getSize().x, target.getSize().y));
-    background.setFillColor(sf::Color(0, 0, 0));
-    target.draw(background);
+    drawBackground(target, sf::Color(0, 0, 0));
 
+    title->onDraw(target);
     newGameButton->onDraw(target);
     exitButton->onDraw(target);
 
-    title->onDraw(target);
 }

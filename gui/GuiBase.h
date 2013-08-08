@@ -15,6 +15,8 @@ class GuiBase {
 
     protected:
         MainClass *mainClass;
+
+        void drawBackground(sf::RenderTarget &target, sf::Color color) const;
 };
 
 // forward declared

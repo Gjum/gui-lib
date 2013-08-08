@@ -28,10 +28,8 @@ void GuiNewGame::onEvent(sf::Event &event) {
 }
 
 void GuiNewGame::onDraw(sf::RenderTarget &target) {
-    sf::RectangleShape background(sf::Vector2f(target.getSize().x, target.getSize().y));
-    if (checkbox->isEnabled()) background.setFillColor(sf::Color(0, fader->getValue(), 0));
-    else background.setFillColor(sf::Color(fader->getValue(), 0, 0));
-    target.draw(background);
+    if (checkbox->isEnabled()) drawBackground(target, sf::Color(0, fader->getValue(), 0));
+    else drawBackground(target, sf::Color(fader->getValue(), 0, 0));
 
     title->onDraw(target);
     playerName->onDraw(target);
