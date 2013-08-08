@@ -3,6 +3,7 @@
 
 #include <GuiSplash.h>
 #include <gui/GuiBase.h>
+#include <gui/Label.h>
 #include <gui/TextField.h>
 #include <gui/Checkbox.h>
 #include <gui/Fader.h>
@@ -17,12 +18,11 @@ class GuiNewGame: public GuiBase {
         void onDraw(sf::RenderTarget &target);
 
     private:
-        sf::Text title;
+        Label *title;
         TextField *playerName;
         Checkbox *checkbox;
         Fader *fader;
-        Button *startGameButton,
-            *cancelButton;
+        Button *cancelButton;
 };
 
 #endif // GUINEWGAME_H

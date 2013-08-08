@@ -3,23 +3,17 @@
 GuiNewGame::GuiNewGame(MainClass *newMainClass) {
     mainClass = newMainClass;
 
-    title.setString("Some inputs");
-    title.setColor(sf::Color(255, 255, 255));
-    title.move(sf::Vector2f(20, 20));
-    title.setCharacterSize(20);
-    title.setFont(newMainClass->getFont());
-
+    title = new Label(mainClass, "Some inputs", 100, 20, 20);
     playerName = new TextField(newMainClass, 60, 60);
     checkbox = new Checkbox(newMainClass, 60, 100);
     fader = new Fader(newMainClass, 100, 100, 160, 0, 255);
-    startGameButton = new Button(newMainClass, "Start game", 60, 140);
-    cancelButton = new Button(newMainClass, "Cancel", 60, 180);
+    cancelButton = new Button(newMainClass, "Main menu", 60, 140);
 }
 GuiNewGame::~GuiNewGame() {
+    delete title;
     delete playerName;
     delete checkbox;
     delete fader;
-    delete startGameButton;
     delete cancelButton;
 }
 
@@ -28,14 +22,8 @@ void GuiNewGame::onEvent(sf::Event &event) {
     checkbox->onEvent(event);
     fader->onEvent(event);
 
-    if (startGameButton->onEvent(event)) {
-        // TODO add functionality
-    }
-    else if (cancelButton->onEvent(event)) {
+    if (cancelButton->onEvent(event)) {
         mainClass->changeGui(new GuiSplash(mainClass));
-    }
-    else {
-        // no button pressed
     }
 }
 
@@ -45,11 +33,9 @@ void GuiNewGame::onDraw(sf::RenderTarget &target) {
     else background.setFillColor(sf::Color(fader->getValue(), 0, 0));
     target.draw(background);
 
+    title->onDraw(target);
     playerName->onDraw(target);
     checkbox->onDraw(target);
     fader->onDraw(target);
-    startGameButton->onDraw(target);
     cancelButton->onDraw(target);
-
-    target.draw(title);
 }

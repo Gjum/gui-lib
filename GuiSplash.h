@@ -3,6 +3,7 @@
 
 #include <GuiNewGame.h>
 #include <gui/GuiBase.h>
+#include <gui/Label.h>
 #include <gui/Button.h>
 
 class GuiSplash: public GuiBase {
@@ -14,7 +15,7 @@ class GuiSplash: public GuiBase {
         void onDraw(sf::RenderTarget &target);
 
     private:
-        sf::Text title;
+        Label *title;
         Button *newGameButton,
             *exitButton;
 };
