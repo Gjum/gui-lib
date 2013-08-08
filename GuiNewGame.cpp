@@ -3,9 +3,11 @@
 GuiNewGame::GuiNewGame(MainClass *newMainClass) {
     mainClass = newMainClass;
 
-    title.setString("New game");
+    title.setString("Some inputs");
     title.setColor(sf::Color(255, 255, 255));
     title.move(sf::Vector2f(20, 20));
+    title.setCharacterSize(20);
+    title.setFont(newMainClass->getFont());
 
     playerName = new TextField(newMainClass, 60, 60);
     checkbox = new Checkbox(newMainClass, 60, 100);
