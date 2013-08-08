@@ -40,25 +40,29 @@ void Checkbox::onEvent(sf::Event &event) {
         else hovering = false;
     }
     else if (hovering
-            && event.type == sf::Event::MouseButtonPressed
-            && event.mouseButton.button == sf::Mouse::Left
-       ) enabled = !enabled;
+             && event.type == sf::Event::MouseButtonPressed
+             && event.mouseButton.button == sf::Mouse::Left
+            ) enabled = !enabled;
 }
 void Checkbox::onDraw(sf::RenderTarget &target) const {
     sf::RectangleShape background(sf::Vector2f(width, height));
     background.setPosition(xPos, yPos);
     background.setOutlineThickness(2);
-    background.setOutlineColor(sf::Color(0, 0, 255, 128));
+    background.setOutlineColor(sf::Color(0, 0, 0, 255));
     if (hovering) {
-        if (enabled) background.setFillColor(sf::Color(0, 255, 0, 255));
-        else background.setFillColor(sf::Color(255, 0, 0, 255));
+        background.setFillColor(sf::Color(0, 0, 255, 255));
     }
     else {
-        if (enabled) background.setFillColor(sf::Color(0, 255, 0, 128));
-        else background.setFillColor(sf::Color(255, 0, 0, 128));
+        background.setFillColor(sf::Color(0, 0, 255, 128));
     }
-
     target.draw(background);
+
+    if (enabled) {
+        sf::RectangleShape dot(sf::Vector2f(width / 2, height / 2));
+        dot.setPosition(sf::Vector2f(xPos + width / 4, yPos + height / 4));
+        dot.setFillColor(sf::Color(0, 0, 0));
+        target.draw(dot);
+    }
 }
 
 bool Checkbox::isEnabled() const {
