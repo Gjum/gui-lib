@@ -1,28 +1,10 @@
 #include "TextField.h"
 
 TextField::TextField(MainClass *newMainClass, int newXPos, int newYPos) {
-    xPos = newXPos;
-    yPos = newYPos;
-    width = 200;
-    height = 30;
-
-    title.setFont(newMainClass->getFont());
-    title.setCharacterSize(15);
-    title.setPosition(xPos + title.getCharacterSize() / 2.0, yPos + height / 2.0 - title.getCharacterSize() / 2.0);
-
-    active = false;
+    init(newMainClass, newXPos, newYPos, 200, 30);
 }
 TextField::TextField(MainClass *newMainClass, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight) {
-    xPos = newXPos;
-    yPos = newYPos;
-    width = newWidth;
-    height = newHeight;
-
-    title.setFont(newMainClass->getFont());
-    title.setCharacterSize(15);
-    title.setPosition(xPos + title.getCharacterSize() / 2.0, yPos + height / 2.0 - title.getCharacterSize() / 2.0);
-
-    active = false;
+    init(newMainClass, newXPos, newYPos, newWidth, newHeight);
 }
 TextField::~TextField() {
 }
@@ -35,16 +17,27 @@ void TextField::onEvent(sf::Event &event) {
                 && event.mouseButton.x < xPos + width
                 && event.mouseButton.y > yPos
                 && event.mouseButton.y < yPos + height
-           ) active = true;
+           ) {
+            active = true;
+            // TODO set caret position
+            caretPos = title.getString().getSize();
+            while (title.findCharacterPos(caretPos).x > event.mouseButton.x
+                    && caretPos > 0)
+                caretPos--;
+        }
         else active = false;
     }
     else if (active && event.type == sf::Event::TextEntered) {
         std::string newText = title.getString();
-        if (event.text.unicode == 8) {
-            newText = newText.substr(0, newText.size()-1);
+        if (event.text.unicode == 8 && caretPos > 0) { // backspace
+            newText = newText.substr(0, caretPos - 1) + newText.substr(caretPos, newText.size() - 1);
+            caretPos--;
         }
-        else if (event.text.unicode <= 126 && event.text.unicode >= 32) {
-            newText += static_cast<char>(event.text.unicode);
+        else if (event.text.unicode <= 126 && event.text.unicode >= 32) { // printable ASCII
+            newText = newText.substr(0, caretPos)
+                + static_cast<char>(event.text.unicode)
+                + newText.substr(caretPos, newText.size() - 1);
+            caretPos++;
         }
 
         title.setString(newText);
@@ -57,12 +50,37 @@ void TextField::onDraw(sf::RenderTarget &target) const {
     background.setOutlineThickness(2);
     if (active) background.setOutlineColor(sf::Color(0, 0, 255, 255));
     else background.setOutlineColor(sf::Color(0, 0, 255, 128));
-
     target.draw(background);
 
     target.draw(title);
+
+    if (active) {
+        sf::RectangleShape caret(sf::Vector2f(2, title.getCharacterSize()));
+        caret.setPosition(title.findCharacterPos(caretPos));
+        caret.setFillColor(sf::Color(255, 255, 255));
+        target.draw(caret);
+    }
 }
 
 std::string TextField::getContent() const {
     return title.getString();
+}
+
+void TextField::setContent(std::string newString) {
+    title.setString(newString);
+    if (caretPos > newString.size()) caretPos = newString.size();
+}
+
+void TextField::init(MainClass *newMainClass, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight) {
+    xPos = newXPos;
+    yPos = newYPos;
+    width = newWidth;
+    height = newHeight;
+
+    title.setFont(newMainClass->getFont());
+    title.setCharacterSize(15);
+    title.setPosition(xPos + title.getCharacterSize() / 2.0, yPos + height / 2.0 - title.getCharacterSize() / 2.0);
+
+    active = false;
+    caretPos = 0;
 }

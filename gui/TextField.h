@@ -15,12 +15,16 @@ class TextField {
         void onDraw(sf::RenderTarget &target) const;
 
         std::string getContent() const;
+        void setContent(std::string newString);
 
     private:
         int xPos, yPos;
-        unsigned int width, height;
+        unsigned int width, height,
+            caretPos;
         sf::Text title;
         bool active;
+
+        void init(MainClass *newMainClass, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight);
 };
 
 #endif // TEXTFIELD_H
