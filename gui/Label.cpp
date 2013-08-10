@@ -42,6 +42,7 @@ void Label::realign() {
     sf::Vector2f oldPos = title.getPosition();
 
     title.setPosition(0, 0);
+    title.setOrigin(0, 0);
 
     if (align == TOP_LEFT)
         title.setOrigin(0, 0);
