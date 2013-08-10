@@ -19,6 +19,8 @@ class Button {
         unsigned int width, height;
         sf::Text title;
         bool hovering;
+
+        void init(MainClass *newMainClass, std::string newTitle, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight);
 };
 
 #endif // BUTTON_H

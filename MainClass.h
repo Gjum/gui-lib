@@ -3,8 +3,6 @@
 
 #include <gui/GuiBase.h>
 
-#include <SFML/Window.hpp>
-
 class MainClass {
     public:
         MainClass(sf::RenderWindow *window);

@@ -1,32 +1,10 @@
 #include "Button.h"
 
 Button::Button(MainClass *newMainClass, std::string newTitle, int newXPos, int newYPos) {
-    xPos = newXPos;
-    yPos = newYPos;
-    width = 200;
-    height = 30;
-    title.setString(newTitle);
-
-    title.setFont(newMainClass->getFont());
-    title.setCharacterSize(15);
-    title.setOrigin(title.findCharacterPos(title.getString().getSize()).x / 2.0, title.getCharacterSize() / 2.0);
-    title.setPosition(xPos + width / 2.0, yPos + height / 2.0);
-
-    hovering = false;
+    init(newMainClass, newTitle, newXPos, newYPos, 200, 30);
 }
 Button::Button(MainClass *newMainClass, std::string newTitle, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight) {
-    xPos = newXPos;
-    yPos = newYPos;
-    width = newWidth;
-    height = newHeight;
-
-    title.setString(newTitle);
-    title.setFont(newMainClass->getFont());
-    title.setCharacterSize(15);
-    title.setOrigin(title.findCharacterPos(title.getString().getSize()).x / 2.0, title.getCharacterSize() / 2.0);
-    title.setPosition(xPos + width / 2.0, yPos + height / 2.0);
-
-    hovering = false;
+    init(newMainClass, newTitle, newXPos, newYPos, newWidth, newHeight);
 }
 Button::~Button() {
 }
@@ -60,4 +38,19 @@ void Button::onDraw(sf::RenderTarget &target) const {
     target.draw(background);
 
     target.draw(title);
+}
+
+void Button::init(MainClass *newMainClass, std::string newTitle, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight) {
+    xPos = newXPos;
+    yPos = newYPos;
+    width = newWidth;
+    height = newHeight;
+
+    title.setString(newTitle);
+    title.setFont(newMainClass->getFont());
+    title.setCharacterSize(15);
+    title.setOrigin(title.findCharacterPos(title.getString().getSize()).x / 2.0, title.getCharacterSize() / 2.0);
+    title.setPosition(xPos + width / 2.0, yPos + height / 2.0);
+
+    hovering = false;
 }

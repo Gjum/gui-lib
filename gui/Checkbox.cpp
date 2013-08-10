@@ -1,31 +1,16 @@
 #include "Checkbox.h"
 
 Checkbox::Checkbox(MainClass *newMainClass, int newXPos, int newYPos) {
-    xPos = newXPos;
-    yPos = newYPos;
-    width = 30;
-    height = 30;
-
-    enabled = false;
-    hovering = false;
+    init(newMainClass, newXPos, newYPos, 30, 30, false);
 }
 Checkbox::Checkbox(MainClass *newMainClass, int newXPos, int newYPos, bool newEnabled) {
-    xPos = newXPos;
-    yPos = newYPos;
-    width = 30;
-    height = 30;
-
-    enabled = newEnabled;
-    hovering = false;
+    init(newMainClass, newXPos, newYPos, 30, 30, newEnabled);
 }
 Checkbox::Checkbox(MainClass *newMainClass, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight) {
-    xPos = newXPos;
-    yPos = newYPos;
-    width = newWidth;
-    height = newHeight;
-
-    enabled = false;
-    hovering = false;
+    init(newMainClass, newXPos, newYPos, newWidth, newHeight, false);
+}
+Checkbox::Checkbox(MainClass *newMainClass, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight, bool newEnabled) {
+    init(newMainClass, newXPos, newYPos, newWidth, newHeight, newEnabled);
 }
 Checkbox::~Checkbox() {
 }
@@ -67,4 +52,17 @@ void Checkbox::onDraw(sf::RenderTarget &target) const {
 
 bool Checkbox::isEnabled() const {
     return enabled;
+}
+void Checkbox::setEnabled(bool value) {
+    enabled = value;
+}
+
+void Checkbox::init(MainClass *newMainClass, int newXPos, int newYPos, unsigned int newWidth, unsigned int newHeight, bool newEnabled) {
+    xPos = newXPos;
+    yPos = newYPos;
+    width = newWidth;
+    height = newHeight;
+    enabled = newEnabled;
+
+    hovering = false;
 }
