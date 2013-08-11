@@ -28,19 +28,33 @@ void TextField::onEvent(sf::Event &event) {
         else active = false;
     }
     else if (active && event.type == sf::Event::TextEntered) {
-        std::string newText = title.getString();
-        if (event.text.unicode == 8 && caretPos > 0) { // backspace
-            newText = newText.substr(0, caretPos - 1) + newText.substr(caretPos, newText.size() - 1);
-            caretPos--;
-        }
-        else if (event.text.unicode <= 126 && event.text.unicode >= 32) { // printable ASCII
-            newText = newText.substr(0, caretPos)
-                + static_cast<char>(event.text.unicode)
-                + newText.substr(caretPos, newText.size() - 1);
+        if (event.text.unicode <= 126 && event.text.unicode >= 32) { // printable ASCII
+            std::string str = title.getString();
+            title.setString(str.substr(0, caretPos)
+                            + static_cast<char>(event.text.unicode)
+                            + str.substr(caretPos, str.size() - 1));
             caretPos++;
         }
-
-        title.setString(newText);
+    }
+    else if (event.type == sf::Event::KeyPressed) {
+        std::string str = title.getString();
+        if (event.key.code == sf::Keyboard::Key::BackSpace && caretPos > 0) {
+            title.setString(str.substr(0, caretPos - 1)
+                            + str.substr(caretPos, str.size() - 1));
+            caretPos--;
+        }
+        else if (event.key.code == sf::Keyboard::Key::Delete && caretPos < str.size()) {
+            title.setString(str.substr(0, caretPos)
+                            + str.substr(caretPos + 1, str.size() - 1));
+        }
+        else if (event.key.code == sf::Keyboard::Key::Right && caretPos < str.size())
+            caretPos++;
+        else if (event.key.code == sf::Keyboard::Key::Left && caretPos > 0)
+            caretPos--;
+        else if (event.key.code == sf::Keyboard::Key::Home)
+            caretPos = 0;
+        else if (event.key.code == sf::Keyboard::Key::End)
+            caretPos = str.size();
     }
 }
 void TextField::onDraw(sf::RenderTarget &target) const {
